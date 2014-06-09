@@ -1,3 +1,4 @@
+- MANTA-183 handle paired/single read mixture in input alignments
 v0.20.1
 - Lower default min candidate size to 8
 v0.20.0

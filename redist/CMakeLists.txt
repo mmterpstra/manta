@@ -145,6 +145,8 @@ endif ()
 # samtools
 #
 set(SAMTOOLS_PREFIX "samtools-1.2")
+#the samtools makefile looks for htslib in this folder(htslib-1.2.1) not htslib-1.2.1-204-g8197cfd.
+set(SAMTOOLS_HTSLIB_PREFIX "htslib-1.2.1")
 set(SAMTOOLS_DIR "${CMAKE_CURRENT_BINARY_DIR}/${SAMTOOLS_PREFIX}")
 set(SAMTOOLS_LIBRARY "${SAMTOOLS_DIR}/libbam.a")
 superset(SAMTOOLS_PROG "${SAMTOOLS_DIR}/samtools")
@@ -154,7 +156,7 @@ add_custom_command(
     OUTPUT ${SAMTOOLS_DIR}
     COMMAND ${CMAKE_COMMAND} -E remove_directory "${SAMTOOLS_DIR}"
     COMMAND ${CMAKE_COMMAND} -E tar xjf "${THIS_REDIST_DIR}/${SAMTOOLS_PREFIX}.tar.bz2"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${HTSLIB_DIR}" "${SAMTOOLS_DIR}/${HTSLIB_PREFIX}"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${HTSLIB_DIR}" "${SAMTOOLS_DIR}/${SAMTOOLS_HTSLIB_PREFIX}"
     DEPENDS ${HTSLIB_FINAL_TASK}
     COMMENT "Unpacking samtools package")
 
